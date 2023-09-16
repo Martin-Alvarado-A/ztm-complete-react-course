@@ -1,4 +1,3 @@
-// const fetch = require('node-fetch');
 import fetch from 'node-fetch';
 
 export const getPeoplePromise = (fetch) => {
@@ -9,22 +8,22 @@ export const getPeoplePromise = (fetch) => {
         count: data.count,
         results: data.results,
       };
-      console.log(`🔎 | getPeoplePromise | modeledData:`, modeledData);
+      // console.log(`🔎 | Script2 | getPeoplePromise > data:`, modeledData);
 
       return modeledData;
     });
 };
 
 export const getPeople = async (fetch) => {
-  const getRequest = await fetch('https://swapi.dev/api/people/');
-  const data = await getRequest.json();
+  let getRequest = await fetch('https://swapi.dev/api/people/');
+  let data = await getRequest.json();
 
   const modeledData = {
     count: data.count,
     results: data.results,
   };
 
-  console.log(`🔎 | getPeople | modeledData:`, modeledData);
+  // console.log(`🔎 | Script2 | getPeople > data:`, modeledData);
   return modeledData;
 };
 
