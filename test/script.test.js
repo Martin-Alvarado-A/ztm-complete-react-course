@@ -4,9 +4,9 @@ import gaagleSearch from './script';
 const dbMock = ['dog.com', 'cheesepuff.com', 'disney.com', 'dogpictures.com'];
 
 describe('Gaagle Search', () => {
-  it('this is a test', () => {
-    gaagleSearch('test', dbMock);
-  });
+  // it('this is a test', () => {
+  //   gaagleSearch('test', dbMock);
+  // });
 
   it('is serching gaagle', () => {
     expect(gaagleSearch('test', dbMock)).toEqual([]);
