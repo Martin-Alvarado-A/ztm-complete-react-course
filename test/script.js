@@ -7,11 +7,13 @@ const gaagleDatabase = [
   'myfavoritecats.com',
 ];
 
-const gaagleSearch = (searchInput) => {
-  const matches = gaagleDatabase.filter((website) => {
+const gaagleSearch = (searchInput, db) => {
+  const matches = db.filter((website) => {
     return website.includes(searchInput);
   });
   return matches.length > 3 ? matches.slice(0, 3) : matches;
 };
 
-console.log(`🔎 | gaagleSearch | test:`, gaagleSearch('cats'));
+// console.log(`🔎 | gaagleSearch | test:`, gaagleSearch('cats', gaagleDatabase));
+
+module.exports = gaagleSearch;
