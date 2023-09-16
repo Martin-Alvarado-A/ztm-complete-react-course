@@ -1,4 +1,5 @@
-const gaagleSearch = require('./script');
+// const gaagleSearch = require('./script');
+import gaagleSearch from './script';
 
 const dbMock = ['dog.com', 'cheesepuff.com', 'disney.com', 'dogpictures.com'];
 

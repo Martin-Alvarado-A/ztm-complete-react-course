@@ -7,7 +7,8 @@ const gaagleDatabase = [
   'myfavoritecats.com',
 ];
 
-const gaagleSearch = (searchInput, db) => {
+// const gaagleSearch = (searchInput, db) => {
+export default gaagleSearch = (searchInput, db) => {
   const matches = db.filter((website) => {
     return website.includes(searchInput);
   });
@@ -16,4 +17,4 @@ const gaagleSearch = (searchInput, db) => {
 
 // console.log(`🔎 | gaagleSearch | test:`, gaagleSearch('cats', gaagleDatabase));
 
-module.exports = gaagleSearch;
+// module.exports = gaagleSearch;
