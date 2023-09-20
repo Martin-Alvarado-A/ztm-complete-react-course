@@ -7,7 +7,6 @@ import {
   fetchCategoriesSuccess,
   fetchCategoriesFailed,
 } from '../category.action';
-import { executionAsyncId } from 'async_hooks';
 
 describe('Category reducer Tests', () => {
   test('fetchCategoriesStart', () => {
