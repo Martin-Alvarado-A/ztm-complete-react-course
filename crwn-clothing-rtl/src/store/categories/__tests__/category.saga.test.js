@@ -1,4 +1,5 @@
 import { testSaga, expectSaga } from 'redux-saga-test-plan';
+import { throwError } from 'redux-saga-test-plan/providers';
 import {
   fetchCategoriesAsync,
   onFetchCategories,
@@ -6,6 +7,11 @@ import {
 } from '../category.saga';
 import { call } from 'typed-redux-saga/macro';
 import { CATEGORIES_ACTION_TYPES } from '../category.types';
+import { getCategoriesAndDocuments } from '../../../utils/firebase/firebase.utils';
+import {
+  fetchCategoriesSuccess,
+  fetchCategoriesFailed,
+} from '../category.action';
 
 describe('Categories saga', () => {
   test('categoriesSaga', () => {
@@ -25,5 +31,25 @@ describe('Categories saga', () => {
       )
       .next()
       .isDone();
+  });
+
+  test('fetchCategoriesAsync success', () => {
+    const mockCategoriesArray = [
+      { id: 1, name: 'Category 1' },
+      { id: 2, name: 'Category 2' },
+    ];
+    return expectSaga(fetchCategoriesAsync)
+      .provide([[call(getCategoriesAndDocuments), mockCategoriesArray]])
+      .put(fetchCategoriesSuccess(mockCategoriesArray))
+      .run();
+  });
+
+  test('fetchCategoriesAsync failure', () => {
+    const mockError = new Error('An error occurred');
+
+    return expectSaga(fetchCategoriesAsync)
+      .provide([[call(getCategoriesAndDocuments), throwError(mockError)]])
+      .put(fetchCategoriesFailed(mockError))
+      .run();
   });
 });
